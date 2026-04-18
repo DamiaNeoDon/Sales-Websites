@@ -112,6 +112,13 @@ export default function App() {
             Auto-Moto <span className="text-orange-theme">Jarosław Drozd</span>
           </div>
 
+          <div className="hidden lg:flex items-center gap-8 text-[10px] font-black uppercase tracking-widest mr-8">
+            <button onClick={() => scrollTo('start')} className="hover:text-orange-theme transition-colors">START</button>
+            <button onClick={() => scrollTo('usługi')} className="hover:text-orange-theme transition-colors">USŁUGI</button>
+            <button onClick={() => scrollTo('galeria')} className="hover:text-orange-theme transition-colors">GALERIA</button>
+            <button onClick={() => scrollTo('kontakt')} className="hover:text-orange-theme transition-colors">KONTAKT</button>
+          </div>
+
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full text-sm font-medium border border-white/10">
               <span className="text-orange-theme">★★★★★</span>
@@ -267,6 +274,53 @@ export default function App() {
               </div>
             </section>
 
+            <section id="galeria" className="space-y-8">
+              <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+                <div>
+                  <h4 className="text-[10px] uppercase text-orange-theme font-black tracking-[0.2em] mb-3">Portfolio realizacji</h4>
+                  <h2 className="text-4xl font-extrabold tracking-tighter uppercase italic">Ostatnie Prace & Warsztat</h2>
+                </div>
+                <div className="flex gap-4 items-center">
+                  <a 
+                    href="https://www.google.com/maps/place/Auto-Moto+Jaros%C5%82aw+Drozd/@51.1337259,21.9455839,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipN3-yvU0z_VjY_G9_XU-j-r4G8N-z-z-z-z-z-z!2e1!3e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipN3-yvU0z_VjY_G9_XU-j-r4G8N-z-z-z-z-z-z%3Dw203-h152-k-no!7i4032!8i3024!4m6!3m5!1s0x47228f6f0d45a55d:0xcde4c15e0db34581!8m2!3d51.1337259!4d21.9455839!16s%2Fg%2F11xsw43_6s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-black uppercase tracking-widest text-gray-theme hover:text-orange-theme transition-colors flex items-center gap-2 border-b border-transparent hover:border-orange-theme pb-1"
+                  >
+                    Zobacz zdjęcia na Google Maps <ChevronRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  // Enhanced collection matching the real workshop aesthetic
+                  "https://images.unsplash.com/photo-1494906109277-516346507443?auto=format&fit=crop&q=80&w=800", // Red brick exterior vibe
+                  "https://images.unsplash.com/photo-1632733711679-5292d6863f12?auto=format&fit=crop&q=80&w=800", // Precision engine work
+                  "https://images.unsplash.com/photo-1504222490345-c075b6008014?auto=format&fit=crop&q=80&w=800", // Tire service detail
+                  "https://images.unsplash.com/photo-1615906655593-ad0313b52a0a?auto=format&fit=crop&q=80&w=800", // Car on professional lift
+                  "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=800", // Diagnostic computer
+                  "https://images.unsplash.com/photo-1517524008410-b4458ef02577?auto=format&fit=crop&q=80&w=800", // Mechanic at work
+                  "https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&q=80&w=800", // Tool cabinet
+                  "https://images.unsplash.com/photo-1542282088-fe8426682bc8?auto=format&fit=crop&q=80&w=800"  // Engine assembly
+                ].map((src, i) => (
+                  <motion.div 
+                    key={i}
+                    whileHover={{ scale: 0.98 }}
+                    className="aspect-square rounded-xl overflow-hidden border border-white/5 relative group cursor-zoom-in"
+                  >
+                    <img 
+                      src={src} 
+                      alt={`Galeria ${i}`} 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                      referrerPolicy="no-referrer" 
+                    />
+                    <div className="absolute inset-0 bg-navy-dark/0 group-hover:bg-navy-dark/20 transition-colors"></div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+
             {/* About / Trust Section */}
             <section id="o-nas" className="space-y-12">
               <div className="border-l-4 border-orange-theme pl-8 bg-navy/50 p-8 rounded-r-xl">
@@ -372,6 +426,7 @@ export default function App() {
           <div className="flex gap-8">
             <button onClick={() => scrollTo('start')} className="hover:text-white transition-colors">START</button>
             <button onClick={() => scrollTo('usługi')} className="hover:text-white transition-colors">USŁUGI</button>
+            <button onClick={() => scrollTo('galeria')} className="hover:text-white transition-colors">GALERIA</button>
             <button onClick={() => scrollTo('kontakt')} className="hover:text-white transition-colors">KONTAKT</button>
           </div>
           <div>Realizacja: Profesjonalne Usługi Motoryzacyjne</div>
@@ -388,7 +443,7 @@ export default function App() {
             className="fixed inset-0 z-[60] bg-navy-dark flex flex-col items-center justify-center gap-8 md:hidden"
           >
             <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-white"><X className="w-10 h-10" /></button>
-            {['Start', 'Usługi', 'O nas', 'Godziny', 'Kontakt'].map((item) => (
+            {['Start', 'Usługi', 'Galeria', 'O nas', 'Godziny', 'Kontakt'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase().replace(' ', '-'))}
